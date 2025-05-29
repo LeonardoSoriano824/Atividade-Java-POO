@@ -31,6 +31,7 @@ public class Veiculo {
             System.out.println("Erro! Valor Invalido!");
         }
         else {
+            System.out.println("Acelerado!");
             this.velocidadeAtual += incremento;
         }
     }
@@ -41,7 +42,7 @@ public class Veiculo {
             System.out.println("Erro! Valor invalido!");
         }
         else {
-            System.out.println("Acelerado!");
+            System.out.println("Freando!");
             this.velocidadeAtual -= decremento;
         }
     }
