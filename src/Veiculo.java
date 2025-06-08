@@ -4,10 +4,16 @@ public class Veiculo {
     private double velocidadeAtual;
 
 
-    public Veiculo(String modelo, int ano) {
+    public Veiculo(String modelo, int ano) throws AnoInvalidoException {
+        if (ano < 1900) {
+            throw new AnoInvalidoException("Ano invalido!");
+        }
+        
         this.modelo = modelo;
         this.ano = ano;
         this.velocidadeAtual = 0.0;
+
+        
     }
 
 
@@ -28,7 +34,7 @@ public class Veiculo {
 
     public void acelerar(double incremento) {
         if (incremento < 0.0) {
-            System.out.println("Erro! Valor Invalido!");
+            throw new IllegalArgumentException("Error! Incremento não pode ser negativo");
         }
         else {
             System.out.println("Acelerado!");
@@ -39,12 +45,16 @@ public class Veiculo {
     
     public void frear(double decremento) {
         if (decremento < 0.0 || decremento > velocidadeAtual) {
-            System.out.println("Erro! Valor invalido!");
+            throw new IllegalArgumentException("Erro! Decremento não pode ser negativo.");
         }
-        else {
-            System.out.println("Freando!");
-            this.velocidadeAtual -= decremento;
+        
+        if (decremento > velocidadeAtual) {
+             throw new IllegalArgumentException("Erro! Decremento maior que a velocidade atual.");
         }
+        
+        System.out.println("Freando!");
+        this.velocidadeAtual -= decremento;
+        
     }
 
     public void exibirInformacoes() {

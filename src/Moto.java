@@ -1,7 +1,7 @@
 public class Moto extends Veiculo {
     private int cilindradas;
     
-    public Moto(String modelo, int ano, int cilindradas) {
+    public Moto(String modelo, int ano, int cilindradas) throws AnoInvalidoException{
         super(modelo, ano);
         this.cilindradas = cilindradas;
     }

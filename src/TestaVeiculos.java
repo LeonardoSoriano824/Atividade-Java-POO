@@ -1,9 +1,20 @@
 public class TestaVeiculos {
     
     public static void main(String[] args) {
+        Carro carro1 = null;
+        Moto moto1 = null;
+
+        try {
+            carro1 = new Carro("Sedan", 2025, 4);
+        } catch (AnoInvalidoException e) {
+            System.err.println(e.getMessage());
+        }
         
-        Carro carro1 = new Carro("Sedan", 2023, 4);
-        Moto moto1 = new Moto("Esportiva", 2024, 600);
+        try {
+            moto1 = new Moto("Esportiva", 2024, 600);
+        } catch (AnoInvalidoException e) {
+            System.err.println(e.getMessage());
+        }
         
         System.out.println("---Carro---");
         carro1.exibirInformacoes();
@@ -13,10 +24,22 @@ public class TestaVeiculos {
         System.out.println();
         
         System.out.println("---Acelerando Carro---");
+        
+        try {
         carro1.acelerar(30);
+        } catch(IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        }
+
         System.out.println();
         System.out.println("---Acelerando Moto---");
-        moto1.acelerar(50);
+        
+        try {
+            moto1.acelerar(50);
+        } catch(IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        }
+
         System.out.println();
         
         System.out.println("---Carro---");
@@ -27,10 +50,22 @@ public class TestaVeiculos {
         System.out.println();
         
         System.out.println("---Freando Carro---");
-        carro1.frear(50);
+        
+        try {
+            carro1.frear(50);
+        
+        } catch(IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        }
         System.out.println();
         System.out.println("---Freando Moto---");
-        moto1.frear(20);
+        
+        try {
+            moto1.frear(20);
+        } catch(IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        }
+
         System.out.println();
         
         System.out.println("---Carro---");
