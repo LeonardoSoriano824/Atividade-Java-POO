@@ -80,6 +80,26 @@ public class TestaVeiculos {
         System.out.println();
         System.out.println("---Moto empinando---");
         moto1.empinar();
+        System.out.println();
+        
+        
+        SimuladorViagem simuladorCarro = new SimuladorViagem(carro1);
+        SimuladorViagem simuladorMoto = new SimuladorViagem(moto1); 
+
+        
+        Thread threadCarro = new Thread(simuladorCarro);
+        Thread threadMoto = new Thread(simuladorMoto);
+
+        threadCarro.start();
+        threadMoto.start();
+        
+        try {
+            threadCarro.join();
+            threadMoto.join();
+        } catch (InterruptedException e) {
+            System.err.println("Thread interrompida");
+        }
         
     }
+
 }
